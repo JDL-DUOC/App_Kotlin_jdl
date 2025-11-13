@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MiApp</string>
+    <string name="title_form">Formulario de Registro</string>
+    <string name="hint_name">Nombre completo</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_phone">Teléfono</string>
+    <string name="button_submit">Enviar</string>
+    <string name="button_clear">Limpiar</string>
+</resources>

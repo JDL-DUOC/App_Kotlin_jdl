@@ -1,0 +1,4 @@
+<resources>
+    <!-- Tema base neutro solo para compatibilidad -->
+    <style name="Theme.Creativeblock" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
