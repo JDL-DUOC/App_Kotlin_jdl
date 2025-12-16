@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler) // 👈 NUEVO plugin obligatorio desde Kotlin 2.0
-    id("kotlin-kapt")
+    alias(libs.plugins.compose.compiler)
+
 }
 
 android {
@@ -43,12 +43,12 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"  // ✅ Compatible con Kotlin 2.0.21
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 }
 
 dependencies {
-    // DEPENDENCIAS BÁSICAS
+    // ANDROIDX + COMPOSE
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,24 +58,38 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
+    // Material icons
     implementation("androidx.compose.material:material-icons-extended")
-    // Íconos extendidos de Material para poder usar Icons.Default.Description, Icons.Default.Build, etc.
-    implementation("androidx.compose.material:material-icons-extended")
-
-    // Si aún no lo tienes, esta asegura compatibilidad entre Material3 y Material icons
     implementation("androidx.compose.material:material")
 
+    // RETROFIT + MOSHI
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
 
+    // MATERIAL3 (ya lo tienes)
+    implementation("androidx.compose.material3:material3")
 
-    // DEPENDENCIAS ADICIONALES
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // NAVIGATION
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // VIEWMODEL (AÑADIR ESTA)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+
+    // COROUTINES
     implementation(libs.kotlinx.coroutines.android)
 
-    // ROOM DATABASE
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
+    // KOIN
+    implementation("io.insert-koin:koin-android:3.5.6")
+    implementation("io.insert-koin:koin-androidx-compose:3.5.6")
+
+
+
+
+
 
     // TESTING
     testImplementation(libs.junit)
